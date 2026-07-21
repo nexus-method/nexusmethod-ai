@@ -1,0 +1,13 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "nexusmethod.co" }],
+      "destination": "https://nexusmethod.ai/$1",
+      "permanent": true
+    }
+  ]
+}
