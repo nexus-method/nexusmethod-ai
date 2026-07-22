@@ -1,70 +1,203 @@
-// CONTENT: OQ-8 — Professional headshot needed. Replace placeholder with real image path.
-// Bio copy is placeholder; Molly to review tone and update with specific company names/outcomes.
+import ScrollReveal from "@/components/scroll-reveal";
+import { about, PROOF_VARIANT } from "@/content";
 
 export default function About() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-[var(--color-brand-bg)]"
+      style={{
+        backgroundColor: "var(--bg-surface-alt)",
+        paddingTop: "120px",
+        paddingBottom: "120px",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Photo placeholder */}
-          <div className="order-2 md:order-1">
-            <div className="aspect-[4/5] max-w-sm mx-auto md:mx-0 rounded-2xl bg-stone-200 flex items-center justify-center">
-              {/* OQ-8: Replace with real headshot */}
-              <p className="text-stone-400 text-sm text-center px-6">
-                [Professional headshot — OQ-8]
-              </p>
-            </div>
-          </div>
+      <div
+        className="max-w-[1200px] mx-auto"
+        style={{ padding: "0 var(--spacing-section-x)" }}
+      >
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-16 lg:gap-24 items-start">
+          {/* Left — bio */}
+          <ScrollReveal>
+            <div>
+              <span
+                className="block font-semibold uppercase"
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.1em",
+                  color: "var(--accent-default)",
+                  marginBottom: "16px",
+                }}
+              >
+                {about.eyebrow}
+              </span>
 
-          {/* Bio */}
-          <div className="order-1 md:order-2">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-brand-accent)] mb-4">
-              About Molly
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-brand-primary)] leading-tight mb-6">
-              I built this because I needed it first.
-            </h2>
+              <h2
+                className="font-bold"
+                style={{
+                  fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                  lineHeight: "1.15",
+                  letterSpacing: "-0.015em",
+                  color: "var(--text-primary)",
+                  marginBottom: "32px",
+                }}
+              >
+                {about.headline}
+              </h2>
 
-            <div className="space-y-4 text-[var(--color-brand-secondary)] leading-relaxed">
-              <p>
-                I&apos;ve spent 12+ years scaling products across startups and enterprises — from product
-                marketing and GTM strategy to building the autonomous systems that now run my own
-                business. I didn&apos;t start as an AI consultant. I became one when I realized the
-                same operational leverage I built internally could transform a service business.
-              </p>
-              <p>
-                Nexus Method runs on the systems I built for myself. The AI workflows, the
-                automated follow-up sequences, the dashboards that tell me what&apos;s working without
-                me having to ask — those exist in my business before I install them in yours.
-                This isn&apos;t theory. It&apos;s something I&apos;ve already solved.
-              </p>
-              <p>
-                I work with a small number of businesses at a time, which means I&apos;m in the details
-                of every engagement. Not a junior team. Me.
-              </p>
-            </div>
+              <div className="space-y-5" style={{ marginBottom: "48px" }}>
+                {about.bio.map((para, i) => (
+                  <p
+                    key={i}
+                    style={{
+                      fontSize: "17px",
+                      lineHeight: "1.65",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
 
-            {/* Credibility signals */}
-            <div className="mt-8 pt-8 border-t border-[var(--color-brand-border)]">
-              <div className="grid grid-cols-3 gap-6 text-center">
-                <div>
-                  <p className="text-2xl font-bold text-[var(--color-brand-primary)]">12+</p>
-                  <p className="text-xs text-[var(--color-brand-muted)] mt-1">Years in product &amp; GTM</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-[var(--color-brand-primary)]">$5M</p>
-                  <p className="text-xs text-[var(--color-brand-muted)] mt-1">Revenue ceiling served</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-[var(--color-brand-primary)]">Austin</p>
-                  <p className="text-xs text-[var(--color-brand-muted)] mt-1">Home base, remote-friendly</p>
-                </div>
+              {/* Credential strip */}
+              <div
+                className="flex"
+                style={{
+                  paddingTop: "32px",
+                  borderTop: "1px solid var(--border-default)",
+                }}
+              >
+                {about.credentials.map((cred, i) => (
+                  <div
+                    key={cred.label}
+                    className="flex-1 text-center"
+                    style={{
+                      borderRight:
+                        i < about.credentials.length - 1
+                          ? "1px solid var(--border-default)"
+                          : "none",
+                      padding: "0 24px",
+                    }}
+                  >
+                    <p
+                      className="font-bold"
+                      style={{
+                        fontSize: "32px",
+                        color: "var(--accent-default)",
+                        lineHeight: 1,
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {cred.value}
+                    </p>
+                    <p
+                      className="uppercase font-medium"
+                      style={{
+                        fontSize: "11px",
+                        letterSpacing: "0.05em",
+                        color: "var(--text-secondary)",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {cred.label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
+
+          {/* Right — proof variant */}
+          <ScrollReveal delay={100}>
+            {PROOF_VARIANT === "testimonials" ? (
+              <div className="space-y-4">
+                {about.testimonials.map((t, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      padding: "24px",
+                      borderRadius: "var(--radius-lg)",
+                      backgroundColor: "var(--bg-surface-raised)",
+                      boxShadow: "var(--shadow-card-light)",
+                    }}
+                  >
+                    <p
+                      className="italic"
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: "1.65",
+                        color: "var(--text-primary)",
+                        marginBottom: "16px",
+                      }}
+                    >
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                    <p
+                      className="font-semibold"
+                      style={{
+                        fontSize: "14px",
+                        color: "var(--accent-default)",
+                      }}
+                    >
+                      {t.author}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "var(--text-secondary)",
+                      }}
+                    >
+                      {t.company}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Logo grid — placeholder until logos arrive */
+              <div
+                style={{
+                  padding: "32px",
+                  borderRadius: "var(--radius-xl)",
+                  backgroundColor: "var(--bg-surface-raised)",
+                  boxShadow: "var(--shadow-card-light)",
+                  minHeight: "200px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "16px",
+                }}
+              >
+                <p
+                  className="font-semibold uppercase text-center"
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  Trusted by service businesses
+                </p>
+                <div
+                  className="flex flex-wrap justify-center gap-6"
+                  style={{ opacity: 0.4 }}
+                >
+                  {about.logoGrid.map((client) => (
+                    <div
+                      key={client.name}
+                      style={{
+                        width: "80px",
+                        height: "32px",
+                        borderRadius: "var(--radius-sm)",
+                        backgroundColor: "var(--border-default)",
+                      }}
+                      title={client.name}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </ScrollReveal>
         </div>
       </div>
     </section>

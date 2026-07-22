@@ -1,81 +1,138 @@
-// COPY PENDING: OQ-1 — 4-step Nexus Method framework from Sage/Flynn.
-// Placeholder names and descriptions align with brief §3; update when framework is confirmed.
-
-const steps = [
-  {
-    number: "01",
-    name: "Assess",
-    tagline: "Map how the business actually runs.",
-    description:
-      "We start with a structured audit of your operations — how work flows, where decisions bottleneck, and where the highest-value automation opportunities are hiding. Not how you think it runs. How it actually runs.",
-  },
-  {
-    number: "02",
-    name: "Diagnose",
-    tagline: "Prioritize by ROI, not complexity.",
-    description:
-      "From the audit, we identify the lead-rescue opportunities and owner-dependency choke points that will move the needle fastest. You get a clear, ranked implementation roadmap — not a feature wishlist.",
-  },
-  {
-    number: "03",
-    name: "Build",
-    tagline: "Install the system.",
-    description:
-      "We deploy your AI revenue system — typically on GoHighLevel or an equivalent stack purpose-built for your business. Molly reviews and approves every workflow before it goes live. No black boxes.",
-  },
-  {
-    number: "04",
-    name: "Hand Off",
-    tagline: "Your team runs it. We keep it sharp.",
-    description:
-      "You get a live dashboard, team training, and a retainer engagement to maintain and evolve the system as your business grows. The goal is operational independence — not dependency on a consultant.",
-  },
-];
+import ScrollReveal from "@/components/scroll-reveal";
+import { method } from "@/content";
 
 export default function Method() {
   return (
     <section
       id="method"
-      className="py-24 md:py-32 bg-[var(--color-brand-bg)]"
+      style={{
+        backgroundColor: "var(--bg-inverse)",
+        paddingTop: "120px",
+        paddingBottom: "120px",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div
+        className="max-w-[1200px] mx-auto"
+        style={{ padding: "0 var(--spacing-section-x)" }}
+      >
         {/* Section header */}
-        <div className="max-w-2xl mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-brand-accent)] mb-4">
-            The Nexus Method
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-brand-primary)] leading-tight mb-4">
-            A specific process. Repeatable results.
-          </h2>
-          <p className="text-[var(--color-brand-secondary)] text-lg leading-relaxed">
-            This isn&apos;t &quot;we&apos;ll figure it out together.&quot; Every engagement follows the same four-step process — because the path from chaos to operational leverage is well-worn.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div
+            className="text-center"
+            style={{ maxWidth: "760px", margin: "0 auto 64px" }}
+          >
+            <span
+              className="block font-semibold uppercase"
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.1em",
+                color: "var(--accent-default)",
+                marginBottom: "16px",
+              }}
+            >
+              {method.eyebrow}
+            </span>
+            <h2
+              className="font-bold"
+              style={{
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                lineHeight: "1.15",
+                letterSpacing: "-0.015em",
+                color: "var(--text-inverse)",
+                marginBottom: "16px",
+              }}
+            >
+              {method.headline}
+            </h2>
+            <p
+              style={{
+                fontSize: "18px",
+                lineHeight: "1.65",
+                color: "var(--text-inverse-muted)",
+              }}
+            >
+              {method.subhead}
+            </p>
+          </div>
+        </ScrollReveal>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connector line — desktop only */}
-          <div className="hidden md:block absolute top-10 left-10 right-10 h-px bg-[var(--color-brand-border)]" />
+        {/* 4-step cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {method.steps.map((step, i) => (
+            <ScrollReveal key={step.number} delay={i * 80}>
+              <div
+                className="nm-card-dark"
+                style={{
+                  padding: "32px 28px",
+                  borderRadius: "var(--radius-xl)",
+                  boxShadow: "var(--shadow-card-dark)",
+                  height: "100%",
+                  cursor: "default",
+                }}
+              >
+                {/* Step number */}
+                <span
+                  className="block font-bold"
+                  style={{
+                    fontSize: "13px",
+                    letterSpacing: "0.05em",
+                    color: "var(--accent-default)",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {step.number}
+                </span>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {steps.map((step) => (
-              <div key={step.number} className="relative">
-                {/* Step number bubble */}
-                <div className="w-10 h-10 rounded-full bg-[var(--color-brand-accent)] text-white flex items-center justify-center text-sm font-bold mb-6 relative z-10">
-                  {step.number.replace("0", "")}
-                </div>
-                <p className="text-xs font-bold uppercase tracking-wider text-[var(--color-brand-muted)] mb-1">
+                {/* Copper separator */}
+                <div
+                  style={{
+                    width: "32px",
+                    height: "2px",
+                    backgroundColor: "var(--accent-default)",
+                    opacity: 0.5,
+                    marginBottom: "20px",
+                  }}
+                />
+
+                {/* Step name (overline) */}
+                <span
+                  className="block font-semibold uppercase"
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    color: "var(--text-inverse-muted)",
+                    marginBottom: "8px",
+                  }}
+                >
                   {step.name}
-                </p>
-                <h3 className="text-lg font-semibold text-[var(--color-brand-primary)] mb-3">
+                </span>
+
+                {/* Tagline */}
+                <h3
+                  className="font-bold"
+                  style={{
+                    fontSize: "20px",
+                    lineHeight: "1.2",
+                    color: "var(--text-inverse)",
+                    marginBottom: "16px",
+                  }}
+                >
                   {step.tagline}
                 </h3>
-                <p className="text-sm text-[var(--color-brand-secondary)] leading-relaxed">
-                  {step.description}
+
+                {/* Body */}
+                <p
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.65",
+                    color: "var(--text-inverse-muted)",
+                  }}
+                >
+                  {step.body}
                 </p>
               </div>
-            ))}
-          </div>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>

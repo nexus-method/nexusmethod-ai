@@ -1,55 +1,127 @@
-// COPY PENDING: OQ-2 — Hero headline + subhead options from Sage/Flynn.
-// Placeholder copy matches the brief's framing; swap before launch.
-
-const BOOK_URL = "https://calendly.com/molly-nexusmethod/discovery-call";
+import ScrollReveal from "@/components/scroll-reveal";
+import { hero, BOOK_URL } from "@/content";
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center pt-16 bg-[var(--color-brand-bg)]"
+      style={{
+        backgroundColor: "var(--bg-inverse)",
+        paddingTop: "152px", // 72px nav + 80px breathing room
+        paddingBottom: "128px",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-24 md:py-32 w-full">
-        <div className="max-w-3xl">
-          {/* Eyebrow */}
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-brand-accent)] mb-6">
-            AI Consulting for Service Businesses
-          </p>
+      <div
+        className="max-w-[1200px] mx-auto"
+        style={{ padding: "0 var(--spacing-section-x)" }}
+      >
+        <div style={{ maxWidth: "720px" }}>
+          <ScrollReveal>
+            {/* Eyebrow + copper rule */}
+            <div className="flex flex-col gap-3" style={{ marginBottom: "32px" }}>
+              <span
+                className="font-semibold uppercase"
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.1em",
+                  color: "var(--accent-default)",
+                  lineHeight: 1.4,
+                }}
+              >
+                {hero.eyebrow}
+              </span>
+              <div
+                style={{
+                  width: "48px",
+                  height: "2px",
+                  backgroundColor: "var(--accent-default)",
+                }}
+              />
+            </div>
+          </ScrollReveal>
 
-          {/* Headline — OQ-2 placeholder */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-brand-primary)] leading-tight tracking-tight mb-6">
-            Your business shouldn&apos;t need you at every decision point.
-          </h1>
-
-          {/* Subhead */}
-          <p className="text-lg md:text-xl text-[var(--color-brand-secondary)] leading-relaxed mb-10 max-w-2xl">
-            Nexus Method installs AI-powered revenue systems into $500K–$5M service businesses —
-            so operations run without the owner in the loop, leads stop falling through the cracks,
-            and growth doesn&apos;t require adding headcount.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href={BOOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[var(--color-brand-accent)] text-white font-semibold text-base hover:opacity-90 transition-opacity"
+          <ScrollReveal delay={80}>
+            <h1
+              className="font-bold"
+              style={{
+                fontSize: "clamp(2.25rem, 4.5vw, 4rem)",
+                lineHeight: "1.08",
+                letterSpacing: "-0.025em",
+                color: "var(--text-inverse)",
+                marginBottom: "28px",
+              }}
             >
-              Book a Discovery Call →
-            </a>
-            <a
-              href="#method"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-md border border-[var(--color-brand-border)] text-[var(--color-brand-primary)] font-semibold text-base hover:bg-stone-100 transition-colors"
-            >
-              See the Method
-            </a>
-          </div>
+              {hero.headline}
+            </h1>
+          </ScrollReveal>
 
-          {/* Social proof micro-signal */}
-          <p className="mt-8 text-sm text-[var(--color-brand-muted)]">
-            Working with service businesses in Austin and remote-first teams across the US.
-          </p>
+          <ScrollReveal delay={140}>
+            <p
+              style={{
+                fontSize: "clamp(1.0625rem, 1.5vw, 1.125rem)",
+                lineHeight: "1.65",
+                color: "var(--text-inverse-muted)",
+                marginBottom: "48px",
+                maxWidth: "580px",
+              }}
+            >
+              {hero.subhead}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={200}>
+            {/* CTAs */}
+            <div
+              className="flex flex-col sm:flex-row gap-4"
+              style={{ marginBottom: "40px" }}
+            >
+              {/* Primary — copper pill */}
+              <a
+                href={BOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nm-cta-copper-lift inline-flex items-center justify-center font-semibold"
+                style={{
+                  fontSize: "16px",
+                  padding: "16px 32px",
+                  borderRadius: "var(--radius-pill)",
+                  backgroundColor: "var(--accent-bg)",
+                  color: "var(--accent-text)",
+                  textDecoration: "none",
+                  boxShadow: "var(--shadow-cta)",
+                }}
+              >
+                {hero.ctaPrimary}
+              </a>
+
+              {/* Ghost CTA */}
+              <a
+                href="#method"
+                className="nm-ghost-cta inline-flex items-center justify-center font-semibold"
+                style={{
+                  fontSize: "16px",
+                  padding: "15px 32px",
+                  borderRadius: "var(--radius-pill)",
+                  border: "1px solid var(--border-dark-medium)",
+                  color: "var(--text-inverse)",
+                  textDecoration: "none",
+                }}
+              >
+                {hero.ctaSecondary}
+              </a>
+            </div>
+
+            {/* Social proof micro-signal */}
+            <p
+              style={{
+                fontSize: "14px",
+                color: "var(--text-inverse-muted)",
+                lineHeight: 1.5,
+              }}
+            >
+              {hero.socialProof}
+            </p>
+          </ScrollReveal>
         </div>
       </div>
     </section>

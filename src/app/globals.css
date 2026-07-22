@@ -1,20 +1,134 @@
 @import "tailwindcss";
 
-/* Brand tokens — placeholders, swap when Lyra's brief lands */
-@theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─────────────────────────────────────────────
+   Nexus Method Brand Tokens
+   Source: nexusmethod-design-tokens.css (Pixel, 2026-07-21)
+   Inlined here to avoid import ordering issues with Tailwind v4
+───────────────────────────────────────────── */
+:root {
+  /* Deep Slate scale */
+  --brand-slate-900: #1a1f2e;
+  --brand-slate-800: #242a3d;
+  --brand-slate-700: #2e3650;
+  --brand-slate-600: #3a4463;
+  --brand-slate-500: #4f5c80;
+  --brand-slate-400: #6b7499;
+  --brand-slate-300: #8d94b0;
+  --brand-slate-200: #b8bdd0;
+  --brand-slate-100: #dde0ea;
+  --brand-slate-50:  #f0f1f5;
 
-  /* Brand palette */
-  --color-brand-bg:        #fafaf9;  /* stone-50 — warm off-white */
-  --color-brand-surface:   #ffffff;
-  --color-brand-primary:   #1c1917;  /* stone-900 */
-  --color-brand-secondary: #57534e;  /* stone-600 */
-  --color-brand-muted:     #a8a29e;  /* stone-400 */
-  --color-brand-border:    #e7e5e4;  /* stone-200 */
-  --color-brand-accent:    #1e40af;  /* blue-800 — CTA / action; swap with Lyra color */
-  --color-brand-accent-lt: #dbeafe;  /* blue-100 */
-  --color-brand-warm:      #fef3c7;  /* amber-100 — callout highlight */
+  /* Warm Copper scale */
+  --brand-copper-900: #7a3d18;
+  --brand-copper-800: #9e5021;
+  --brand-copper-700: #b0632a;
+  --brand-copper-600: #c8773a;
+  --brand-copper-500: #d68f54;
+  --brand-copper-400: #e0a872;
+  --brand-copper-300: #e8be95;
+  --brand-copper-200: #f0d3b8;
+  --brand-copper-100: #f7e8d8;
+  --brand-copper-50:  #fdf5ee;
+
+  /* Bone White scale */
+  --brand-bone-900: #8a7e68;
+  --brand-bone-800: #a8997f;
+  --brand-bone-700: #c4b89e;
+  --brand-bone-600: #d8cebc;
+  --brand-bone-500: #e5ddd0;
+  --brand-bone-400: #ede7dc;
+  --brand-bone-300: #f2ede5;
+  --brand-bone-200: #f5f2ec;
+  --brand-bone-100: #f9f7f4;
+  --brand-bone-50:  #fdfcfb;
+
+  /* Cool Mid-Gray scale */
+  --brand-gray-900: #3a3f47;
+  --brand-gray-800: #4e545d;
+  --brand-gray-700: #636971;
+  --brand-gray-600: #787e87;
+  --brand-gray-500: #8b9099;
+  --brand-gray-400: #a0a5ad;
+  --brand-gray-300: #b8bcc3;
+  --brand-gray-200: #d0d3d8;
+  --brand-gray-100: #e5e7ea;
+  --brand-gray-50:  #f3f4f5;
+
+  --neutral-white: #ffffff;
+  --neutral-black: #000000;
+
+  /* ─── Semantic Color Tokens ─── */
+  --bg-page:           var(--brand-bone-200);
+  --bg-surface:        var(--brand-bone-50);
+  --bg-surface-raised: var(--neutral-white);
+  --bg-surface-alt:    #edeae3;
+  --bg-inverse:        var(--brand-slate-900);
+  --bg-inverse-raised: var(--brand-slate-800);
+  --bg-muted:          var(--brand-bone-300);
+  --bg-accent-subtle:  var(--brand-copper-50);
+
+  --text-primary:       var(--brand-slate-900);
+  --text-secondary:     var(--brand-gray-500);
+  --text-tertiary:      var(--brand-gray-400);
+  --text-muted:         var(--brand-gray-300);
+  --text-inverse:       var(--brand-bone-200);
+  --text-inverse-muted: var(--brand-slate-300);
+  --text-link:          var(--brand-copper-600);
+  --text-accent:        var(--brand-copper-600);
+
+  --border-default:      var(--brand-bone-500);
+  --border-subtle:       var(--brand-bone-300);
+  --border-strong:       var(--brand-slate-200);
+  --border-focus:        var(--brand-copper-600);
+  --border-dark:         rgba(255, 255, 255, 0.1);
+  --border-dark-medium:  rgba(255, 255, 255, 0.2);
+
+  --cta-bg:       var(--brand-slate-900);
+  --cta-bg-hover: var(--brand-slate-800);
+  --cta-text:     var(--brand-bone-200);
+
+  --accent-bg:        var(--brand-copper-600);
+  --accent-bg-hover:  var(--brand-copper-700);
+  --accent-bg-active: var(--brand-copper-800);
+  --accent-text:      var(--neutral-white);
+  --accent-default:   var(--brand-copper-600);
+  --accent-subtle:    var(--brand-copper-50);
+  --accent-muted:     var(--brand-copper-200);
+
+  /* ─── Spacing ─── */
+  --spacing-section-y:        96px;
+  --spacing-section-x:        80px;
+  --spacing-section-y-mobile: 72px;
+
+  /* ─── Border Radius ─── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-pill: 999px;
+
+  /* ─── Motion ─── */
+  --motion-duration-fast:   150ms;
+  --motion-duration-base:   250ms;
+  --motion-duration-slow:   400ms;
+  --motion-duration-reveal: 600ms;
+  --motion-ease-default:    cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --motion-ease-out:        cubic-bezier(0, 0, 0.2, 1);
+  --motion-ease-reveal:     cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ─── Shadows ─── */
+  --shadow-sm:         0 1px 3px 0 rgba(26, 31, 46, 0.08), 0 1px 2px -1px rgba(26, 31, 46, 0.06);
+  --shadow-md:         0 4px 12px -2px rgba(26, 31, 46, 0.10), 0 2px 4px -2px rgba(26, 31, 46, 0.06);
+  --shadow-lg:         0 12px 32px -4px rgba(26, 31, 46, 0.12), 0 4px 8px -4px rgba(26, 31, 46, 0.06);
+  --shadow-xl:         0 24px 48px -8px rgba(26, 31, 46, 0.14), 0 8px 16px -8px rgba(26, 31, 46, 0.06);
+  --shadow-card-dark:  0 4px 24px rgba(0, 0, 0, 0.32);
+  --shadow-card-light: 0 2px 16px rgba(26, 31, 46, 0.08);
+  --shadow-cta:        0 4px 16px rgba(200, 119, 58, 0.28);
+
+  /* ─── Typography ─── */
+  --font-family-primary: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 html {
@@ -22,7 +136,164 @@ html {
 }
 
 body {
-  background-color: var(--color-brand-bg);
-  color: var(--color-brand-primary);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-family-primary);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─────────────────────────────────────────────
+   Mobile spacing
+───────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  :root {
+    --spacing-section-x: 24px;
+    --spacing-section-y: var(--spacing-section-y-mobile);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   NexusMark Logo Animations
+───────────────────────────────────────────── */
+
+@keyframes nm-particle-arrive {
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes nm-nexus-brighten {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes nm-nexus-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%       { transform: scale(1.05); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nm-particle,
+  .nm-tail,
+  .nm-nexus-dot,
+  .nm-nexus-glow {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Scroll Reveal
+───────────────────────────────────────────── */
+
+.nm-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--motion-duration-reveal) var(--motion-ease-reveal),
+    transform var(--motion-duration-reveal) var(--motion-ease-reveal);
+}
+
+.nm-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nm-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   CSS Hover Utilities
+   Used in Server Components (no event handlers allowed)
+───────────────────────────────────────────── */
+
+/* Light-bg cards (Problem section) */
+.nm-card-light {
+  box-shadow: var(--shadow-card-light);
+  transition:
+    transform var(--motion-duration-base) var(--motion-ease-default),
+    box-shadow var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-card-light:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(26, 31, 46, 0.12);
+}
+
+/* Dark-bg cards (Method section) */
+.nm-card-dark {
+  background-color: var(--bg-inverse-raised);
+  transition:
+    background-color var(--motion-duration-base) var(--motion-ease-default),
+    transform var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-card-dark:hover {
+  background-color: #2d3350;
+  transform: translateY(-4px);
+}
+
+/* Primary copper CTA pill */
+.nm-cta-copper {
+  transition: background-color var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-cta-copper:hover {
+  background-color: var(--accent-bg-hover) !important;
+}
+
+/* Primary copper CTA with lift (hero) */
+.nm-cta-copper-lift {
+  transition:
+    background-color var(--motion-duration-base) var(--motion-ease-default),
+    transform var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-cta-copper-lift:hover {
+  background-color: var(--accent-bg-hover) !important;
+  transform: translateY(-1px);
+}
+
+/* Ghost CTA border */
+.nm-ghost-cta {
+  transition:
+    border-color var(--motion-duration-base) var(--motion-ease-default),
+    color var(--motion-duration-base) var(--motion-ease-default),
+    background-color var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-ghost-cta:hover {
+  border-color: var(--accent-default) !important;
+  color: var(--accent-default) !important;
+  background-color: rgba(200, 119, 58, 0.06) !important;
+}
+
+/* Dark slate CTA (contact form submit) */
+.nm-cta-dark {
+  transition: background-color var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-cta-dark:hover {
+  background-color: var(--cta-bg-hover) !important;
+}
+
+/* Footer link hover */
+.nm-footer-link {
+  transition: color var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-footer-link:hover {
+  color: var(--text-inverse) !important;
+}
+
+/* Accordion inline link hover */
+.nm-accordion-link {
+  transition: color var(--motion-duration-base) var(--motion-ease-default);
+}
+.nm-accordion-link:hover {
+  color: var(--accent-bg-hover) !important;
 }
