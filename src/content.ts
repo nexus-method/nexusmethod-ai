@@ -10,8 +10,8 @@
 /** Free 30-minute discovery call — Calendly link (verified live 2026-07-22) */
 export const BOOK_URL = "https://calendly.com/molly-nexusmethod/30min";
 
-/** AI Readiness Assessment checkout — placeholder pending $499 Stripe link */
-export const ASSESSMENT_URL = "#"; // TODO: replace with Stripe $499 checkout link
+/** AI Readiness Assessment — paid Calendly event ($499 collected via Stripe at booking, verified live 2026-07-22) */
+export const ASSESSMENT_URL = "https://calendly.com/molly-nexusmethod/ai-readiness-assessment";
 
 export const EMAIL = "hello@nexusmethod.ai";
 
