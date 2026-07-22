@@ -78,7 +78,7 @@ export function FooterCta() {
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            {contact.footerCta.cta}
+            {contact.footerCta.ctaPrimary}
           </a>
 
           <p

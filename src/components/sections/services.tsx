@@ -78,7 +78,7 @@ export default function Services() {
                 (e.currentTarget.style.backgroundColor = "var(--accent-bg)")
               }
             >
-              Book a Scoping Call →
+              {services.sectionCta}
             </a>
           </div>
 

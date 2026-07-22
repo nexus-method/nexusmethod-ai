@@ -1,5 +1,5 @@
 import ScrollReveal from "@/components/scroll-reveal";
-import { hero, BOOK_URL } from "@/content";
+import { hero, BOOK_URL, ASSESSMENT_URL } from "@/content";
 
 export default function Hero() {
   return (
@@ -94,9 +94,9 @@ export default function Hero() {
                 {hero.ctaPrimary}
               </a>
 
-              {/* Ghost CTA */}
+              {/* Ghost CTA — AI Readiness Assessment ($499) */}
               <a
-                href="#method"
+                href={ASSESSMENT_URL}
                 className="nm-ghost-cta inline-flex items-center justify-center font-semibold"
                 style={{
                   fontSize: "16px",
