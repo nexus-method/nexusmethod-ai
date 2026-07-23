@@ -270,7 +270,7 @@ export default function Services() {
                   textDecoration: "none",
                 }}
               >
-                Book a Scoping Call →
+                {services.sectionCta}
               </a>
             </div>
           </div>
