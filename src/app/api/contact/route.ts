@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
 
-// Nexus Method Lead Pipeline list (ClickUp: Nexus Method → Pipeline → Lead Pipeline)
-const LEAD_PIPELINE_LIST_ID = process.env.CLICKUP_LEAD_LIST_ID || "901416970838";
-
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -38,41 +35,36 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Message is required" }, { status: 400 });
   }
 
-  const token = process.env.CLICKUP_TOKEN;
-  if (!token) {
-    console.error("CLICKUP_TOKEN is not configured");
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    console.error("Supabase env vars not configured");
     return NextResponse.json({ error: "Server not configured" }, { status: 500 });
   }
 
-  const description = [
-    "New website lead from nexusmethod.ai.",
-    "",
-    `Name: ${name}`,
-    `Email: ${email}`,
-    `Company: ${company || "(not provided)"}`,
-    "",
-    "What they're dealing with:",
-    message,
-  ].join("\n");
-
   try {
-    const res = await fetch(
-      `https://api.clickup.com/api/v2/list/${LEAD_PIPELINE_LIST_ID}/task`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: token,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: `Website lead: ${name}${company ? ` (${company})` : ""}`,
-          description,
-        }),
+    // Insert server-side with the service_role key (bypasses RLS). The
+    // service_role key is never exposed to the browser, and RLS blocks all
+    // public/anon access to the leads table.
+    const res = await fetch(`${url}/rest/v1/leads`, {
+      method: "POST",
+      headers: {
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
       },
-    );
+      body: JSON.stringify({
+        name,
+        email,
+        company: company || null,
+        message,
+        source: "website_form",
+      }),
+    });
     if (!res.ok) {
       const detail = await res.text();
-      console.error("ClickUp task create failed:", res.status, detail);
+      console.error("Supabase insert failed:", res.status, detail);
       return NextResponse.json({ error: "Could not save lead" }, { status: 502 });
     }
     return NextResponse.json({ ok: true }, { status: 200 });
