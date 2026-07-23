@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { services, BOOK_URL } from "@/content";
+import { services, BOOK_URL, ASSESSMENT_URL } from "@/content";
 
 export default function Services() {
   const [openIndex, setOpenIndex] = useState(0); // first item open by default
@@ -227,9 +227,9 @@ export default function Services() {
                       ))}
                     </ul>
 
-                    {/* Per-item CTA */}
+                    {/* Per-item CTA — Assessment (card 01) books the paid $499 event; others route to the free discovery call */}
                     <a
-                      href={BOOK_URL}
+                      href={item.number === "01" ? ASSESSMENT_URL : BOOK_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center font-semibold"
@@ -247,7 +247,7 @@ export default function Services() {
                         (e.currentTarget.style.color = "var(--accent-default)")
                       }
                     >
-                      Book a Scoping Call →
+                      {item.cta} →
                     </a>
                   </div>
                 </div>

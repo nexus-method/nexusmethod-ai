@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import ScrollReveal from "@/components/scroll-reveal";
-import { contact, BOOK_URL } from "@/content";
+import { contact, BOOK_URL, ASSESSMENT_URL } from "@/content";
 
 export function FooterCta() {
   return (
@@ -81,6 +82,34 @@ export function FooterCta() {
             {contact.footerCta.ctaPrimary}
           </a>
 
+          {/* Secondary CTA — the paid AI Readiness Assessment */}
+          <a
+            href={ASSESSMENT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center font-semibold"
+            style={{
+              fontSize: "16px",
+              padding: "16px 36px",
+              borderRadius: "var(--radius-pill)",
+              backgroundColor: "transparent",
+              color: "var(--text-inverse)",
+              border: "1.5px solid var(--border-dark-medium)",
+              textDecoration: "none",
+              marginLeft: "12px",
+              marginBottom: "24px",
+              transition: `border-color var(--motion-duration-base) var(--motion-ease-default)`,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--accent-default)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-dark-medium)";
+            }}
+          >
+            {contact.footerCta.ctaSecondary}
+          </a>
+
           <p
             className="block"
             style={{
@@ -98,6 +127,35 @@ export function FooterCta() {
 
 export default function Contact() {
   const { form, address } = contact;
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formEl = e.currentTarget;
+    const data = new FormData(formEl);
+    // Honeypot: humans never see this field; a filled value means a bot. Drop silently.
+    if (data.get("company_website")) return;
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          company: data.get("company"),
+          message: data.get("message"),
+        }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("success");
+      formEl.reset();
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
     <section
@@ -199,7 +257,22 @@ export default function Contact() {
                 {form.notReady}
               </h3>
 
-              <form action="#" method="POST" className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                {/* Honeypot — off-screen, hidden from humans, catches bots */}
+                <input
+                  type="text"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    opacity: 0,
+                  }}
+                />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <FormField
                     label={form.fields.name.label}
@@ -266,6 +339,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
+                  disabled={status === "submitting"}
                   className="w-full font-semibold"
                   style={{
                     padding: "14px 24px",
@@ -274,7 +348,8 @@ export default function Contact() {
                     color: "var(--cta-text)",
                     fontSize: "16px",
                     border: "none",
-                    cursor: "pointer",
+                    cursor: status === "submitting" ? "default" : "pointer",
+                    opacity: status === "submitting" ? 0.7 : 1,
                     transition: `background-color var(--motion-duration-base) var(--motion-ease-default)`,
                     fontFamily: "var(--font-family-primary)",
                   }}
@@ -285,18 +360,49 @@ export default function Contact() {
                     (e.currentTarget.style.backgroundColor = "var(--cta-bg)")
                   }
                 >
-                  {form.submit}
+                  {status === "submitting" ? "Sending…" : form.submit}
                 </button>
 
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {form.disclaimer}
-                </p>
+                {status === "success" ? (
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      color: "var(--accent-default)",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    Thanks — your message is in. I&apos;ll respond within 24 hours
+                    to strong-fit inquiries.
+                  </p>
+                ) : status === "error" ? (
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "#c0392b",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    Something went wrong sending that. Email me directly at{" "}
+                    <a
+                      href="mailto:hello@nexusmethod.ai"
+                      style={{ color: "#c0392b", textDecoration: "underline" }}
+                    >
+                      hello@nexusmethod.ai
+                    </a>{" "}
+                    and I&apos;ll get right back to you.
+                  </p>
+                ) : (
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "var(--text-secondary)",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {form.disclaimer}
+                  </p>
+                )}
               </form>
             </div>
           </ScrollReveal>
