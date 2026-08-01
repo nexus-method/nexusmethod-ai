@@ -10,7 +10,7 @@
 /** Free 30-minute discovery call — Calendly link (verified live 2026-07-22) */
 export const BOOK_URL = "https://calendly.com/molly-nexusmethod/30min";
 
-/** AI Readiness Assessment — paid Calendly event ($499 collected via Stripe at booking, verified live 2026-07-22) */
+/** AI Readiness Assessment — paid Calendly event ($1,000 per pricing-canonical.md, ratified 2026-08-01; Stripe amount updated in Calendly by Molly) */
 export const ASSESSMENT_URL = "https://calendly.com/molly-nexusmethod/ai-readiness-assessment";
 
 export const EMAIL = "hello@nexusmethod.ai";
@@ -40,7 +40,7 @@ export const hero = {
   subhead:
     "You've heard the AI pitch from a hundred consultants. What you need is an implementation partner who understands your P&L first, builds second, and hands it over complete. Nexus Method is boutique AI consulting for owner-operators in trades, professional services, and home services. We build it. Your team operates it. That's the difference.",
   ctaPrimary: "Book a free 30-minute discovery call",
-  ctaSecondary: "Take the AI Readiness Assessment ($499)",
+  ctaSecondary: "Take the AI Readiness Assessment ($1,000)",
   socialProof: "Working with service businesses in Austin and remote-first teams across the US.",
 };
 
@@ -118,7 +118,7 @@ export const services = {
       number: "01",
       name: "AI Readiness Assessment",
       hook: "Find out exactly where AI moves the needle.",
-      scope: "$499 · 1 session (60–90 min)",
+      scope: "$1,000 · 1 session (60–90 min)",
       description:
         "A live working session with Molly. We audit your highest-leverage workflows and identify which ones benefit most from automation. You walk out with a roadmap of what to tackle first, ROI for each phase, and timeline — even if you decide not to implement with us.",
       outcomes: [
@@ -148,7 +148,7 @@ export const services = {
       number: "03",
       name: "Fractional Chief AI Officer",
       hook: "Keep your systems running. Scale as you grow.",
-      scope: "$750–$1,500/month · after implementation",
+      scope: "$1,500–$3,500/month · after implementation",
       description:
         "For businesses that want a systems architect on retainer after implementation: quarterly audits, optimization sprints, and support for new workflows as you grow. Optional, cancel anytime. Starts with a 3-month minimum so your systems have time to stabilize — then month-to-month.",
       outcomes: [
@@ -198,7 +198,7 @@ export const contact = {
     headline: "Ready to find your nexus?",
     subhead: "Pick the entry point that fits where you are right now.",
     ctaPrimary: "Book a free 30-minute discovery call",
-    ctaSecondary: "Take the AI Readiness Assessment ($499)",
+    ctaSecondary: "Take the AI Readiness Assessment ($1,000)",
     fine: "Either path, you'll know exactly what's possible — and what it means for your revenue.",
   },
   form: {

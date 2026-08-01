@@ -94,7 +94,7 @@ export default function Hero() {
                 {hero.ctaPrimary}
               </a>
 
-              {/* Ghost CTA — AI Readiness Assessment ($499) */}
+              {/* Ghost CTA — AI Readiness Assessment (price from content.ts, canon: pricing-canonical.md) */}
               <a
                 href={ASSESSMENT_URL}
                 className="nm-ghost-cta inline-flex items-center justify-center font-semibold"

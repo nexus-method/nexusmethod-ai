@@ -227,7 +227,7 @@ export default function Services() {
                       ))}
                     </ul>
 
-                    {/* Per-item CTA — Assessment (card 01) books the paid $499 event; others route to the free discovery call */}
+                    {/* Per-item CTA — Assessment (card 01) books the paid event; others route to the free discovery call */}
                     <a
                       href={item.number === "01" ? ASSESSMENT_URL : BOOK_URL}
                       target="_blank"
