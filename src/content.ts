@@ -133,7 +133,7 @@ export const services = {
       number: "02",
       name: "Implementation",
       hook: "Build it. Own it. Run it without us.",
-      scope: "$5K–$25K · 4–8 weeks",
+      scope: "$10K–$25K · 4–8 weeks",
       description:
         "Four-phase engagement. We handle the build. Your team learns as we go. Before we close, your team can operate, troubleshoot, and adjust every system we built. You own it completely — no consultant on retainer, no 'call us when it breaks.'",
       outcomes: [
