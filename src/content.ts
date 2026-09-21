@@ -133,7 +133,7 @@ export const services = {
       number: "02",
       name: "Implementation",
       hook: "Build it. Own it. Run it without us.",
-      scope: "$10K–$25K · 4–8 weeks",
+      scope: "Custom scope · pricing discussed on your Discovery Call",
       description:
         "Four-phase engagement. We handle the build. Your team learns as we go. Before we close, your team can operate, troubleshoot, and adjust every system we built. You own it completely — no consultant on retainer, no 'call us when it breaks.'",
       outcomes: [
@@ -148,7 +148,7 @@ export const services = {
       number: "03",
       name: "Fractional Chief AI Officer",
       hook: "Keep your systems running. Scale as you grow.",
-      scope: "$1,500–$3,500/month · after implementation",
+      scope: "Custom scope · pricing discussed on your Discovery Call",
       description:
         "For businesses that want a systems architect on retainer after implementation: quarterly audits, optimization sprints, and support for new workflows as you grow. Optional, cancel anytime. Starts with a 3-month minimum so your systems have time to stabilize — then month-to-month.",
       outcomes: [
