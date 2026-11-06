@@ -233,8 +233,16 @@ def markdown_prose(md):
     return normalize(md)
 
 
+def _drop_allowed_phrases(text):
+    """Blank allowlisted multi-word names ("AI Leverage Score") so no rule sees their words."""
+    for phrase in sorted((a for a in ALLOW if ' ' in a), key=len, reverse=True):
+        text = re.sub(rf"(?<!\w){re.escape(phrase)}(?!\w)", ' ', text, flags=re.I)
+    return text
+
+
 def audit(text):
     hits = {'vocab': [], 'phrases': [], 'punctuation': [], 'rhythm': [], 'proof': []}
+    text = _drop_allowed_phrases(text)
     low = text.lower()
 
     for w in VOCAB:
