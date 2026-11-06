@@ -1,0 +1,28 @@
+# Brand, product and trade terms the copy gate never flags. One term per line.
+# Hyphenated entries are excluded from the stacked-compound rule; plain words from the vocabulary rules.
+Nexus Method
+Nexus Method LLC
+nexusmethod.ai
+Molly Jaggers
+AgentOS
+Cedar One
+Quarry
+Jobber
+AI Readiness Assessment
+owner-operator
+owner-operators
+follow-up
+follow-ups
+field-service
+check-in
+check-ins
+remote-first
+remote-friendly
+month-to-month
+single-member
+highest-leverage
+user-facing
+four-step
+four-phase
+privacy-respecting
+advise-and-leave
