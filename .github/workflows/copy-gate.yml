@@ -1,0 +1,21 @@
+name: Copy gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  copy-gate:
+    name: Score authored copy (deslop)
+    runs-on: ubuntu-latest
+    # Advisory while the pages below 5/5 are being cleaned up (see scripts/copy-gate/README.md).
+    # Flip this to false once every page scores 5/5 so the gate blocks regressions.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Extract and score the copy for every page
+        run: bash scripts/copy-gate/run.sh
